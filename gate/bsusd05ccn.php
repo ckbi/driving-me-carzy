@@ -87,7 +87,7 @@ if (strlen($ano) == 2) $ano = "20$ano";
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
         curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
-        curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount=50&currency=usd&payment_method_types[]=card&description=undefy2evil!&payment_method='.$tok1.'&confirm=true&off_session=true');  
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount=0.50&currency=usd&payment_method_types[]=card&description=undefy2evil!&payment_method='.$tok1.'&confirm=true&off_session=true');  
         $result2 = curl_exec($ch);  
         $tok2 = Getstr($result2,'"id": "','"');  
         $receipturl = trim(strip_tags(getStr($result2,'"receipt_url": "','"')));  
