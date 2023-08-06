@@ -1,10 +1,24 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])) {
+    header('LOCATION:login/login.php'); die();
+} else {
+}
+if(isset($_POST['but_logout'])){
+
+
+
+    session_destroy();
+    header('Location: index.php');
+}
+ ?>
 <!DOCTYPE html>
 <html class="loading">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <title> ♕︎𝙅𝙚𝙩𝙞𝙭♕︎ </title>
+  <title>𝐮𝐧𝐝𝐞𝐟𝐲 𝐜𝐡𝐤™</title>
   <link rel="shortcut icon" href="https://images.emojiterra.com/twitter/v14.0/512px/1f4b3.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,11 +39,11 @@
        <div class="card">
         <div class="card-body text-center">
          <h4 class="mb-2">
-          <strong>♕︎𝙅𝙚𝙩𝙞𝙭 𝙎𝙆 𝘽𝘼𝙎𝙀𝘿 𝘾𝙃𝙀𝘾𝙆𝙀𝙍♕︎</strong>
+          <strong>𝐮𝐧𝐝𝐞𝐟𝐲 𝐜𝐡𝐤™</strong>
          </h4>
-         <textarea rows="12" class="form-control text-center form-checker mb-2" placeholder="░T░H░R░O░W░ ░G░E░N░ ░C░A░R░D░ ░H░E░R░E░"></textarea>
-         <textarea rows="1" class="form-control text-center" style="width: 70%; float: left ;" id="sec" placeholder="TᕼᖇOᗯ ᒪIᐯE ᔕK KEY ᕼEᖇE"></textarea>
-         <textarea rows="1" class="form-control text-center" style="width: 30%; float: right margin-bottom: 5px;" id="cst" placeholder="ᴄᴜꜱᴛᴏᴍ ᴀᴍᴏᴜɴᴛ ᴏʀ ʟᴇᴀᴠᴇ ɪᴛ ʙʟᴀɴᴋ"></textarea>
+         <textarea rows="12" class="form-control text-center form-checker mb-2" placeholder="𝒄𝒄𝒔 𝒉𝒆𝒓𝒆 XXXXXXXXXXXXXXXXXXXXXX|XX|XXXX|XXX"></textarea>
+         <textarea rows="1" class="form-control text-center" style="width: 70%; float: left ;" id="sec" placeholder="𝙨𝙠 𝙤𝙧 𝙣𝙤𝙩?E"></textarea>
+         <textarea rows="1" class="form-control text-center" style="width: 30%; float: right margin-bottom: 5px;" id="cst" placeholder="𝙞𝙣𝙨𝙚𝙧𝙩 𝙖𝙢𝙤𝙪𝙣𝙩 𝙤𝙧 𝙣𝙤𝙣𝙚"></textarea>
          </br>
          <select name="gate" id="gate" class="form-control" style="margin-bottom: 5px;" id="gate" placeholder="Select Gate">
           <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/usd1CCN.php">CCN CHARGE: $1</option>
@@ -43,7 +57,7 @@
          </select>
          <br>
          <button class="btn btn-play btn-glow btn-bg-gradient-x-blue-cyan text-white" style="width: 49%; float: left;">
-          <i class="fa fa-play"></i> 𝙎𝙏𝘼𝙍𝙏 </button>
+          <i class="fa fa-play"></i> 𝙘𝙝𝙠 </button>
          <button class="btn btn-stop btn-glow btn-bg-gradient-x-red-pink text-white" style="width: 49%; float: right;" disabled>
           <i class="fa fa-stop"></i> 𝙎𝙏𝙊𝙋 </button>
         </div>
@@ -90,7 +104,7 @@
           </button>
          </div>
          <h4 class="card-title mb-1">
-          <i class="fa fa-check-circle text-success"></i> ♕︎𝘾𝙃𝘼𝙍𝙂𝙀𝘿
+          <i class="fa fa-check-circle text-success"></i> 𝓻𝓲𝓬𝓱 𝓬𝓪𝓻𝓭𝓼
          </h4>
          <div id='lista_charge'></div>
         </div>
@@ -108,7 +122,7 @@
           </button>
          </div>
          <h4 class="card-title mb-1">
-          <i class="fa fa-check text-success"></i> ♕︎𝘾𝙑𝙑
+          <i class="fa fa-check text-success"></i> 𝓬𝓿𝓿
          </h4>
          <div id='lista_cvvs'></div>
         </div>
@@ -126,7 +140,7 @@
           </button>
          </div>
          <h4 class="card-title mb-1">
-          <i class="fa fa-times text-success"></i> ♕︎𝘾𝘾𝙉
+          <i class="fa fa-times text-success"></i> 𝓪𝓼𝓼 𝓬𝓬𝓷
          </h4>
          <div id='lista_aprovadas'></div>
         </div>
@@ -144,7 +158,7 @@
           </button>
          </div>
          <h4 class="card-title mb-1">
-          <i class="fa fa-times text-danger"></i> ♕︎𝘿𝙀𝘾𝙇𝙄𝙉𝙀𝘿
+          <i class="fa fa-times text-danger"></i> 𝓼𝓪𝓭 𝓭𝓮𝓭
          </h4>
          <div style='display: none;' id='lista_reprovadas'></div>
         </div>
@@ -300,7 +314,7 @@ $(document).ready(function() {
 
 		if (!lista) {
 			Swal.fire({
-				title: 'You did not provide a card :(',
+				title: '𝙞𝙣𝙨𝙚𝙧𝙩 𝙘𝙖𝙧𝙙 𝙙𝙪𝙢𝙗𝙖𝙨𝙨',
 				icon: 'error',
 				showConfirmButton: false,
 				toast: true,
@@ -311,7 +325,7 @@ $(document).ready(function() {
 		}
 
 		Swal.fire({
-			title: 'Your cards are being checked...',
+			title: '𝘾𝙝𝙚𝙘𝙠𝙞𝙣𝙜....',
 			icon: 'success',
 			showConfirmButton: false,
 			toast: true,
@@ -343,9 +357,9 @@ $(document).ready(function() {
 
 		$('.form-checker').val(txt.trim());
 		// virtual ghost, don't get the code!!
-		if (total > 5000) {
+		if (total > 20000) {
 			Swal.fire({
-				title: 'YOU CAN NOT PERFORM THAT ACTION: REDUCE NUMBER OF CARDS TO <4999',
+				title: '𝙪𝙣𝙙𝙚𝙧 20𝙠',
 				icon: 'warning',
 				showConfirmButton: false,
 				toast: true,
@@ -413,7 +427,7 @@ $(document).ready(function() {
 
 					if (testadas == total) {
 						Swal.fire({
-							title: 'ALL CARDS HAS BEEN CHECKED',
+							title: '𝙖𝙡𝙡 𝙘𝙖𝙧𝙙𝙨 𝙘𝙝𝙚𝙘𝙠𝙚𝙙',
 							icon: 'success',
 							showConfirmButton: false,
 							toast: true,
