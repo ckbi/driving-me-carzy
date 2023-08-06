@@ -46,14 +46,17 @@ if(isset($_POST['but_logout'])){
          <textarea rows="1" class="form-control text-center" style="width: 30%; float: right margin-bottom: 5px;" id="cst" placeholder="𝙞𝙣𝙨𝙚𝙧𝙩 𝙖𝙢𝙤𝙪𝙣𝙩 𝙤𝙧 𝙣𝙤𝙣𝙚"></textarea>
          </br>
          <select name="gate" id="gate" class="form-control" style="margin-bottom: 5px;" id="gate" placeholder="Select Gate">
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/usd1CCN.php">CCN CHARGE: $1</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/usd5CCN.php">CCN CHARGE: $5</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/usd1CVV.php">CVV CHARGE: $1</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/usd5CVV.php">CVV CHARGE: $5</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/eur1CCN.php">CCN CHARGE: €1</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/eur5CCN.php">CCN CHARGE: €5</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/eur1CVV.php">CVV CHARGE: €1</option>
-          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/eur5CVV.php">CVV CHARGE: €5</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/bsusd05ccn.php">Sk based 0.50 (put sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/bsusd10CCN.php">Sk based 10 (put sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/bsusd15CVV.php">Sk based 15 (put sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/bsusd1CCN.php">Sk based 1 (put sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/bsusd5.php">Sk based 5 (put sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/non10usd.php">Non-sk 10$(no sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/non1usd.php">Non-sk $1(no sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/noneur1ccn.php">Non-sk 0.5$ (no sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/non1usdcvv.php">Non-sk 1$ cvv (no sk)</option>
+          <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/noneur10ccn.php">Non-sk 10€ (no sk)</option>
+          
          </select>
          <br>
          <button class="btn btn-play btn-glow btn-bg-gradient-x-blue-cyan text-white" style="width: 49%; float: left;">
