@@ -43,7 +43,7 @@ if(isset($_POST['but_logout'])){
          </h4>
          <textarea rows="12" class="form-control text-center form-checker mb-2" placeholder="𝒄𝒄𝒔 𝒉𝒆𝒓𝒆 XXXXXXXXXXXXXXXXXXXXXX|XX|XXXX|XXX"></textarea>
          <textarea rows="1" class="form-control text-center" style="width: 70%; float: left ;" id="sec" placeholder="𝙨𝙠 𝙤𝙧 𝙣𝙤𝙩?"></textarea>
-         <textarea rows="1" class="form-control text-center" style="width: 30%; float: right margin-bottom: 5px;" id="cst" placeholder="𝙞𝙣𝙨𝙚𝙧𝙩 𝙖𝙢𝙤𝙪𝙣𝙩 𝙤𝙧 𝙣𝙤𝙣𝙚"></textarea>
+         <textarea rows="1" class="form-control text-center" style="width: 30%; float: right margin-bottom: 5px;" id="tgm" placeholder="insert id here"></textarea>
          </br>
          <select name="gate" id="gate" class="form-control" style="margin-bottom: 5px;" id="gate" placeholder="Select Gate">
           <option style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white" value="gate/bsusd05ccn.php">Sk based 0.50 (put sk)</option>
