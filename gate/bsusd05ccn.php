@@ -1,6 +1,6 @@
 <style>
 	body{
-	color:white; }
+	color:black; }
 	
 </style>
 <?php
